@@ -15,12 +15,6 @@ public class Main {
 
         System.out.println("Hello" + name);
 
-        String input = "1 fish 22 fish red fish blue fish";
-        Scanner fish = new Scanner(input).useDelimiter("\\s*fish\\s*");
-        System.out.println(fish.nextInt());
-        System.out.println(fish.nextInt());
-        System.out.println(fish.next());
-        System.out.println(fish.next());
-        fish.close();
+        //this is a change!!!
     }
 }
