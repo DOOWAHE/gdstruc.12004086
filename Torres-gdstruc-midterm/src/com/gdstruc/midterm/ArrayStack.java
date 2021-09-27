@@ -61,5 +61,9 @@ public class ArrayStack {
             System.out.println(stack[i]);
         }
     }
+
+    public int size(){
+        return  stack.length;
+    }
 }
 

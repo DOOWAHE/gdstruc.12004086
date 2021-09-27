@@ -38,4 +38,7 @@ public class CardStack {
             System.out.println(iterator.next());
         }
     }
+    public int size(){
+        return  stack.size();
+    }
 }

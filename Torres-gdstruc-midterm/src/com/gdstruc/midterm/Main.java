@@ -3,8 +3,12 @@ package com.gdstruc.midterm;
 import java.util.Scanner;
 import java.lang.Math;
 
+
 public class Main {
     public static void main(String[] args) {
+        System.out.println("NOTE: IF NOTHING HAPPENS ");
+        System.out.println("Command recognizes lack of cards ");
+        System.out.println("and is re-randomizing command.");
 
         ArrayStack playerDeck = new ArrayStack(30);
         System.out.println("\nPlayer Deck:");
@@ -19,56 +23,49 @@ public class Main {
 
         CardStack discardedPile = new CardStack();
 
-        int number = 1;
-        int turn = 0;
-        int divide = 2;
-        int checkTurn = turn%divide; //QUESTION: What exactly are the turns?
-//Because it doesn't look like I am fighting anyone?
-
-        while (!playerDeck.equals(0)) { //How to not equal 0?
+        while (playerDeck.size() != 0) {
             int min = 1;
             int max = 5;
-            int random = (int)(Math.random()*(max-min+1)+min);
-//Also, im confused because in the video it said we will need to use user input
-            //however in the instructions it says the commands are random?
-            System.out.println(("What would you like to do? :"));
-            System.out.println(("Draw, Discard or Get ?"));
-            Scanner scanner = new Scanner(System.in);
-            String input = scanner.nextLine();
-            turn++;
+            int randomAmount = (int)(Math.random()*(max-min+1)+min);
+            int randomCommand = (int)(Math.random()*(3-1+1)+1);
 
-            if(input.equals("Draw"))
+
+
+            if (randomCommand == 1)
             {
-                System.out.println("You drew " + random + " amount of cards.");
-                for (int i=0; i < random; i++) {
+                System.out.println("COMMAND: D R A W  ");
+                System.out.println("You drew " + randomAmount + " amount of cards.");
+                for (int i=0; i < randomAmount; i++) {
                     playerDeck.push(new Card("New"));
                 }
             }
-            if(input.equals("Discard"))
-            {
-                System.out.println("You discarded " + random + " amount of cards.");
-                for (int i =0; i< random; i++) {
+
+            if (randomCommand == 2 && randomAmount <= playerDeck.size() ) {
+                System.out.println("COMMAND: D I S C A R D ");
+                System.out.println("You discarded " + randomAmount + " amount of cards.");
+                for (int i = 0; i < randomAmount; i++) {
                     playerDeck.pop();
                     discardedPile.push(playerDeck.peek());
                 }
             }
-            if(input.equals("Get"))
-            {
-                System.out.println("You got " + random + " amount of cards.");
-                for (int i =0; i< random; i++) {
+
+            if (randomCommand == 3 && randomAmount <= discardedPile.size()) {
+                System.out.println("COMMAND: G E T ");
+                System.out.println("You got " + randomAmount + " amount of cards.");
+                for (int i = 0; i < randomAmount; i++) {
                     discardedPile.peek();
                     playerDeck.push(discardedPile.peek());
                     discardedPile.discard();
                 }
             }
-            else
-            {
-                System.out.println("Command unrecognized. Please try again");
-            }
+
+
             System.out.println(("\nPlayer deck :"));
             playerDeck.printStack();
             System.out.println(("\nDiscarded pile:"));
             discardedPile.printStack();
+            System.out.println("Press any key to continue");
+            new java.util.Scanner(System.in).nextLine();
 
         }
     }
