@@ -31,7 +31,6 @@ public class Main {
             int randomAmount = (int) (Math.random() * (max - min + 1) + min);
             int randomCommand = (int) (Math.random() * (3 - 1 + 1) + 1);
 
-
             if (randomCommand == 1) {
                 System.out.println("COMMAND: D R A W  ");
                 System.out.println("You drew " + randomAmount + " amount of cards.");
@@ -60,12 +59,9 @@ public class Main {
             System.out.println(("\nDiscarded pile:"));
             discardedPile.printStack();
             System.out.println("You are given 4 seconds to check before another command is given");
-            for (int i = 0; i < discardedPile.size();
-                 i++) {
-
+            for (int i = 0; i < discardedPile.size(); i++)
+            {
                 Thread.sleep(4000);
-
-
             }
         }
     }
