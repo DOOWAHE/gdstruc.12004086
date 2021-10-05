@@ -22,6 +22,7 @@ public class Main {
 
         CardStack discardedPile = new CardStack();
 
+        System.out.println("Please input something to start randomizing command.\n");
         new java.util.Scanner(System.in).nextLine();
         int min = 1;
         int max = 5;
@@ -58,10 +59,9 @@ public class Main {
             playerDeck.printStack();
             System.out.println(("\nDiscarded pile:"));
             discardedPile.printStack();
-            System.out.println("You are given 4 seconds to check before another command is given");
-            for (int i = 0; i < discardedPile.size(); i++)
-            {
-                Thread.sleep(4000);
+            System.out.println("You are given 3 seconds to check before another command is given");
+            for (int i = 0; i < discardedPile.size(); i++) {
+                Thread.sleep(3000);
             }
         }
     }
